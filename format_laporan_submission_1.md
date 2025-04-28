@@ -2,13 +2,10 @@
 
 ## Domain Proyek
 
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+Program makan siang gratis yang dicanangkan pemerintah menjadi topik hangat di tengah masyarakat, memunculkan beragam penilaian. Sebagian masyarakat menyambutnya dengan antusias, menilai program ini sebagai langkah nyata untuk mengurangi angka stunting, meningkatkan konsentrasi belajar siswa, serta membantu keluarga yang kurang mampu dalam memenuhi kebutuhan gizi anak-anak mereka. Mereka melihat program ini sebagai bentuk perhatian negara terhadap masa depan generasi muda. Namun, di sisi lain, tidak sedikit yang menyampaikan kekhawatiran. Sebagian masyarakat mempertanyakan kesiapan pemerintah dalam menyediakan anggaran yang sangat besar, mengingat banyak sektor lain yang juga membutuhkan perhatian. Ada pula yang meragukan efektivitas distribusi makanan ke seluruh wilayah, terutama daerah terpencil, serta munculnya kekhawatiran akan potensi penyalahgunaan dana. Di tengah harapan dan kecemasan itu, masyarakat berharap program ini tidak hanya menjadi janji, melainkan benar-benar diimplementasikan dengan perencanaan yang matang, transparansi, dan pengawasan yang ketat agar tujuannya dapat tercapai dengan adil dan merata.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+  Format Referensi: [Judul Referensi](https://link.springer.com/chapter/10.1007/978-3-031-58953-9_20) 
 
 ## Business Understanding
 
