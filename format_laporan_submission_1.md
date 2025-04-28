@@ -38,7 +38,7 @@ b. Ekstraksi Fitur dengan TF-IDF: Mengubah teks menjadi vektor numerik menggunak
 c. Data Splitting: Membagi data menjadi data training dan testing.
 
 7. Training Model
-Melatih model Logistic Regression menggunakan data training.
+Melatih model Random forest menggunakan data training.
 
 8. Evaluasi Model
 a. Evaluasi pada data training: Menghitung akurasi dan classification report pada data training.
@@ -48,21 +48,16 @@ b. Evaluasi pada data testing: Menghitung akurasi, classification report dan con
 Membuat fungsi predict_sentiment untuk memprediksi sentimen dari teks baru.
 Fungsi ini melakukan preprocessing teks yang sama seperti pada data training dan menggunakan model yang telah dilatih untuk melakukan prediksi.
 
-10. Contoh Penggunaan
-Meminta input teks dari pengguna, memprediksi sentimen teks tersebut, dan menampilkan hasilnya.
-
 ### Problem Statements
-
 Menjelaskan pernyataan masalah latar belakang:
 - Bagaimana hasil pengujian Sentimen pada tanggapan komentar Negatif dan Positif pada postingan youtube Feri irwandi terkait program Makan siang geratis
 - Apa yang menjadi solusi untuk memperoleh akurasi yang baik dalam memprediksi hasil proses klasifikasi yang dibuat?
 
 ### Goals
-
-# - Jawaban pertanyaan 1
+#  Jawaban pertanyaan 1
 - Berdasarkan pie chart yang ditampilkan, program ini menunjukkan kemampuan dalam mengelola hasil komentar, dengan persentase 19,5% komentar positif dari pie chart komentar dikategorikan positif dan 80,5 komentar negatif dari pie chart dikategorikan negatif.  Hal ini menunjukkan bahwa program mampu memilah sentimen positif dan negatif dengan cukup baik, namun perlu diingat bahwa akurasi ini bergantung pada data yang digunakan dan metode yang diterapkan.  Evaluasi lebih lanjut, seperti confusion matrix dan  *classification report*,  dapat memberikan informasi lebih detail terkait performa program dalam mengklasifikasikan komentar negatif dan positif.
 
-# - Jawaban pernyataan masalah 2
+#  Jawaban pernyataan masalah 2
 1. Kualitas Data Latih:
 - Pastikan data latih berukuran cukup besar dan representatif terhadap data yang akan diprediksi.
 - Bersihkan data latih dari noise dan kesalahan pelabelan.  Data yang salah label akan sangat memengaruhi model. Periksa kembali dan perbaiki label yang tidak sesuai.
@@ -70,12 +65,12 @@ Menjelaskan pernyataan masalah latar belakang:
 
 2. Preprocessing yang Lebih Baik:
 - Eksplorasi teknik preprocessing tambahan. Contohnya:
-- **Normalisasi:** Mengubah kata-kata menjadi bentuk baku.
-- **Lematisasi:** Mengubah kata ke bentuk lemma (bentuk dasar kata).  Perhatikan perbedaan antara stemming dan lemmatization. Lemmatization biasanya lebih baik.
-- **Penghapusan karakter khusus yang lebih komprehensif.**  Bersihkan teks dari emoticon, karakter aneh, atau gabungan huruf-angka yang tidak penting.
-- **Penanganan angka:** Jika angka penting, pertimbangkan untuk mengubahnya menjadi kata (misalnya, "1000" menjadi "seribu"). Atau, jika angka tidak penting, hapuslah.
-- **Menambahkan kata-kata slang yang belum ada di kamus slangwords.** Perbarui kamus slangwords Anda secara berkala.
-- **Tokenizer yang lebih baik:** Pertimbangkan tokenizer yang dapat membedakan entitas dan frasa penting, misal spaCy atau Standford CoreNLP (perlu instalasi tambahan).
+- Normalisasi: Mengubah kata-kata menjadi bentuk baku.
+- Lematisasi: Mengubah kata ke bentuk lemma (bentuk dasar kata).  Perhatikan perbedaan antara stemming dan lemmatization. Lemmatization biasanya lebih baik.
+- Penghapusan karakter khusus yang lebih komprehensif.  Bersihkan teks dari emoticon, karakter aneh, atau gabungan huruf-angka yang tidak penting.
+- Penanganan angka: Jika angka penting, pertimbangkan untuk mengubahnya menjadi kata (misalnya, "1000" menjadi "seribu"). Atau, jika angka tidak penting, hapuslah.
+- Menambahkan kata-kata slang yang belum ada di kamus slangwords. Perbarui kamus slangwords Anda secara berkala.
+- Tokenizer yang lebih baik: Pertimbangkan tokenizer yang dapat membedakan entitas dan frasa penting, misal spaCy atau Standford CoreNLP (perlu instalasi tambahan).
 
 3. Lexicon yang Lebih Komprehensif:
 - Gunakan lexicon sentimen Indonesia yang lebih lengkap dan akurat. Lexicon yang Anda gunakan mungkin masih terbatas.  Pertimbangkan untuk menggunakan lexicon yang lebih besar dan diperbarui.
@@ -97,59 +92,50 @@ Menjelaskan pernyataan masalah latar belakang:
 - Gabungkan prediksi dari beberapa model (ensemble methods) untuk meningkatkan akurasi.
 
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-  ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
-
 ## Data Understanding
-data merupakan hasil scraping melalui konten video youtube yang mengenai program dari pemerintah terkait Makan siang gratis. Dataset ini mengumpulkan opini masyarakat dalam bentuk komentar YouTube terkait dengan suatu topik, kemungkinan besar tentang program makan gratis berdasarkan contoh komentar yang terlihat. Beberapa komentar berisi pandangan kritis tentang penggunaan anggaran negara, sementara yang lain menunjukkan dukungan atau membuat guyonan terkait kebijakan tersebut. Setiap komentar disertai informasi tentang siapa penulisnya (author), berapa banyak orang yang menyukai komentar tersebut (like_count), dan kapan komentar tersebut dipublikasikan (published_at). Meskipun mayoritas komentar awal yang terlihat tidak memiliki banyak "like", dataset ini berpotensi untuk digunakan dalam analisis sentimen publik, tren opini, atau perbandingan respons. berikut adalah datanya 
+Data merupakan hasil scraping melalui konten video youtube yang mengenai program dari pemerintah terkait Makan siang gratis. Dataset ini mengumpulkan opini masyarakat dalam bentuk komentar YouTube terkait dengan suatu topik, kemungkinan besar tentang program makan gratis berdasarkan contoh komentar yang terlihat. Beberapa komentar berisi pandangan kritis tentang penggunaan anggaran negara, sementara yang lain menunjukkan dukungan atau membuat guyonan terkait kebijakan tersebut. Setiap komentar disertai informasi tentang siapa penulisnya (author), berapa banyak orang yang menyukai komentar tersebut (like_count), dan kapan komentar tersebut dipublikasikan (published_at). Meskipun mayoritas komentar awal yang terlihat tidak memiliki banyak "like", dataset ini berpotensi untuk digunakan dalam analisis sentimen publik, tren opini, atau perbandingan respons. berikut adalah datanya [toutube_comment](https://github.com/DickySaragih/Ml_Terapan/blob/main/youtube_comments.csv)
 
 data yang 
 Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
-
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+### Variabel-variabel pada Youtube_comments adalah sebagai berikut:
+- author : 	Menyimpan nama atau ID pengguna YouTube yang memberikan komentar
+- comment : Berisi teks komentar yang ditulis oleh pengguna.
+- like_count : Menunjukkan jumlah like (suka) yang diterima oleh sebuah komentar. 
+- published_at : Menyimpan waktu dan tanggal ketika komentar dipublikasikan. 
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. Preprocessing:
+2. Pelabelan Sentimen (menggunakan lexicon)
+3. Eksplorasi Data (Visualisasi):
+4. Pembentukan Model Klasifikasi:
+5. Evaluasi Model:
+6. Prediksi Sentimen:
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+ Data Splitting: Membagi data menjadi data latih dan data uji.
+- Ekstraksi Fitur (TF-IDF): Mengubah teks menjadi vektor numerik menggunakan TF-IDF.
+-  RandomForestClassifier(n_estimators=150, 
+                                  criterion='gini', 
+                                  max_depth=10, 
+                                  min_samples_split=5, 
+                                  min_samples_leaf=2, 
+                                  max_features='sqrt', 
+                                  bootstrap=True, 
+                                  random_state=42)
+- Training Model (Random Forest): Melatih model Random Forest dengan data latih.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+
+ **Jelaskan proses improvement yang dilakukan**.
+- Random Forest unggul dalam menangani dataset besar dan variabel bervariasi, menghasilkan akurasi tinggi berkat penggabungan beberapa pohon keputusan.  Keunggulannya meliputi:  robust terhadap *outlier*,  mengurangi *overfitting*, dan  memberikan estimasi pentingnya fitur.  Secara keseluruhan, Random Forest merupakan algoritma yang fleksibel dan andal untuk berbagai tugas klasifikasi dan regresi.
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
 
 Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+- 
+Dalam kode ini, matriks digunakan dalam konteks *TF-IDF Vectorizer* dan *Confusion Matrix*.  *TF-IDF Vectorizer* mengubah teks menjadi representasi numerik berupa matriks, di mana setiap baris mewakili sebuah komentar dan setiap kolom mewakili sebuah kata (atau *n-gram*) dalam *corpus*. Nilai dalam matriks merepresentasikan bobot *TF-IDF* dari setiap kata dalam setiap komentar, yang menunjukkan seberapa penting sebuah kata dalam suatu komentar relatif terhadap seluruh *dataset*.  Matriks ini kemudian digunakan sebagai input untuk model *Random Forest* untuk melakukan klasifikasi sentimen. *Confusion Matrix*, di sisi lain, adalah matriks yang menunjukkan kinerja model klasifikasi. Matriks ini menampilkan jumlah prediksi yang benar dan salah untuk setiap kelas (positif dan negatif dalam kasus ini), memberikan gambaran visual mengenai akurasi dan kesalahan model dalam mengklasifikasikan sentimen.  Hasilnya, matriks ini membantu dalam evaluasi model dan identifikasi jenis kesalahan yang dibuat oleh model.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
-
+- Berdasarkan visualisasi confusion matrix dan nilai F1-score, performa model Random Forest dalam mengklasifikasikan sentimen masih perlu ditingkatkan.  Meskipun nilai F1-score yang tertera perlu dicantumkan di sini,  kita dapat menganalisis confusion matrix untuk melihat detailnya.  Misalnya, jika confusion matrix menunjukkan sejumlah besar prediksi positif yang salah, ini mengindikasikan bahwa model cenderung salah mengklasifikasikan sentimen negatif sebagai positif. Sebaliknya, jika terdapat banyak prediksi negatif yang salah, model cenderung salah mengklasifikasikan sentimen positif sebagai negatif.  Angka-angka pada confusion matrix (true positive, true negative, false positive, dan false negative) akan memberikan informasi lebih lanjut tentang jenis kesalahan yang dibuat oleh model dan area mana yang perlu ditingkatkan.
+![image](https://github.com/user-attachments/assets/4bfac147-b1f5-468c-ba51-40b1b64bd5ac)
