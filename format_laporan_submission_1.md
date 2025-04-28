@@ -91,7 +91,6 @@ Menjelaskan pernyataan masalah latar belakang:
 7. Ensemble Methods:
 - Gabungkan prediksi dari beberapa model (ensemble methods) untuk meningkatkan akurasi.
 
-
 ## Data Understanding
 Data merupakan hasil scraping melalui konten video youtube yang mengenai program dari pemerintah terkait Makan siang gratis. Dataset ini mengumpulkan opini masyarakat dalam bentuk komentar YouTube terkait dengan suatu topik, kemungkinan besar tentang program makan gratis berdasarkan contoh komentar yang terlihat. Beberapa komentar berisi pandangan kritis tentang penggunaan anggaran negara, sementara yang lain menunjukkan dukungan atau membuat guyonan terkait kebijakan tersebut. Setiap komentar disertai informasi tentang siapa penulisnya (author), berapa banyak orang yang menyukai komentar tersebut (like_count), dan kapan komentar tersebut dipublikasikan (published_at). Meskipun mayoritas komentar awal yang terlihat tidak memiliki banyak "like", dataset ini berpotensi untuk digunakan dalam analisis sentimen publik, tren opini, atau perbandingan respons. berikut adalah datanya [toutube_comment](https://github.com/DickySaragih/Ml_Terapan/blob/main/youtube_comments.csv)
 
@@ -125,17 +124,10 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
                                   bootstrap=True, 
                                   random_state=42)
 - Training Model (Random Forest): Melatih model Random Forest dengan data latih.
-
-
- **Jelaskan proses improvement yang dilakukan**.
 - Random Forest unggul dalam menangani dataset besar dan variabel bervariasi, menghasilkan akurasi tinggi berkat penggabungan beberapa pohon keputusan.  Keunggulannya meliputi:  robust terhadap *outlier*,  mengurangi *overfitting*, dan  memberikan estimasi pentingnya fitur.  Secara keseluruhan, Random Forest merupakan algoritma yang fleksibel dan andal untuk berbagai tugas klasifikasi dan regresi.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
-
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- 
-Dalam kode ini, matriks digunakan dalam konteks *TF-IDF Vectorizer* dan *Confusion Matrix*.  *TF-IDF Vectorizer* mengubah teks menjadi representasi numerik berupa matriks, di mana setiap baris mewakili sebuah komentar dan setiap kolom mewakili sebuah kata (atau *n-gram*) dalam *corpus*. Nilai dalam matriks merepresentasikan bobot *TF-IDF* dari setiap kata dalam setiap komentar, yang menunjukkan seberapa penting sebuah kata dalam suatu komentar relatif terhadap seluruh *dataset*.  Matriks ini kemudian digunakan sebagai input untuk model *Random Forest* untuk melakukan klasifikasi sentimen. *Confusion Matrix*, di sisi lain, adalah matriks yang menunjukkan kinerja model klasifikasi. Matriks ini menampilkan jumlah prediksi yang benar dan salah untuk setiap kelas (positif dan negatif dalam kasus ini), memberikan gambaran visual mengenai akurasi dan kesalahan model dalam mengklasifikasikan sentimen.  Hasilnya, matriks ini membantu dalam evaluasi model dan identifikasi jenis kesalahan yang dibuat oleh model.
+- Dalam kode ini, matriks digunakan dalam konteks *TF-IDF Vectorizer* dan *Confusion Matrix*.  *TF-IDF Vectorizer* mengubah teks menjadi representasi numerik berupa matriks, di mana setiap baris mewakili sebuah komentar dan setiap kolom mewakili sebuah kata (atau *n-gram*) dalam *corpus*. Nilai dalam matriks merepresentasikan bobot *TF-IDF* dari setiap kata dalam setiap komentar, yang menunjukkan seberapa penting sebuah kata dalam suatu komentar relatif terhadap seluruh *dataset*.  Matriks ini kemudian digunakan sebagai input untuk model *Random Forest* untuk melakukan klasifikasi sentimen. *Confusion Matrix*, di sisi lain, adalah matriks yang menunjukkan kinerja model klasifikasi. Matriks ini menampilkan jumlah prediksi yang benar dan salah untuk setiap kelas (positif dan negatif dalam kasus ini), memberikan gambaran visual mengenai akurasi dan kesalahan model dalam mengklasifikasikan sentimen.  Hasilnya, matriks ini membantu dalam evaluasi model dan identifikasi jenis kesalahan yang dibuat oleh model.
 
 - Berdasarkan visualisasi confusion matrix dan nilai F1-score, performa model Random Forest dalam mengklasifikasikan sentimen masih perlu ditingkatkan.  Meskipun nilai F1-score yang tertera perlu dicantumkan di sini,  kita dapat menganalisis confusion matrix untuk melihat detailnya.  Misalnya, jika confusion matrix menunjukkan sejumlah besar prediksi positif yang salah, ini mengindikasikan bahwa model cenderung salah mengklasifikasikan sentimen negatif sebagai positif. Sebaliknya, jika terdapat banyak prediksi negatif yang salah, model cenderung salah mengklasifikasikan sentimen positif sebagai negatif.  Angka-angka pada confusion matrix (true positive, true negative, false positive, dan false negative) akan memberikan informasi lebih lanjut tentang jenis kesalahan yang dibuat oleh model dan area mana yang perlu ditingkatkan.
 ![image](https://github.com/user-attachments/assets/4bfac147-b1f5-468c-ba51-40b1b64bd5ac)
