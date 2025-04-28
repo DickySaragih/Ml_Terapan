@@ -8,12 +8,12 @@ Program makan siang gratis yang dicanangkan pemerintah menjadi topik hangat di t
   Format Referensi: [Judul Referensi](https://link.springer.com/chapter/10.1007/978-3-031-58953-9_20) 
 
 ## Business Understanding
-###1. Import Library
+1. Import Library
 Mengimpor library yang diperlukan untuk proses klasifikasi, preprocessing teks, dan visualisasi.
 
-# 2. Load Dataset
+2. Load Dataset
 
-# 3. Preprocessing Teks
+3. Preprocessing Teks
 a. Cleaning Text: Membersihkan teks dari noise seperti mention, hashtag, URL, angka, tanda baca, dan karakter khusus.
 b. Case Folding: Mengubah teks menjadi huruf kecil.
 c. Tokenizing Text: Memecah teks menjadi token-token (kata).
@@ -22,33 +22,33 @@ e. Stemming Text: Mengubah kata-kata menjadi bentuk dasarnya (stemming).
 f. Slangwords Handling: Mengganti kata-kata gaul dengan kata-kata standar.
 g. Menggabungkan token-token kembali menjadi kalimat.Memuat dataset dari URL yang disediakan.
 
-# 4. Pelabelan Sentimen
+4. Pelabelan Sentimen
 Menggunakan lexicon Indonesia (positive.tsv dan negative.tsv) untuk memberikan label sentimen (positif atau negatif) pada setiap teks.
 Menghitung skor polaritas untuk setiap kalimat.
 Menetapkan label 'positive' jika score > 0 dan 'negative' jika score <= 0.
 
-# 5. Eksplorasi Label
+5. Eksplorasi Label
 a. Visualisasi Distribusi Label: Menampilkan distribusi sentimen (positif dan negatif) dalam bentuk pie chart.
 b. Word Cloud: Menampilkan word cloud dari seluruh teks untuk melihat kata-kata yang sering muncul.
 c. Word Cloud Positif dan Negatif: Menampilkan word cloud terpisah untuk kata-kata yang muncul dalam teks dengan sentimen positif dan negatif.
 
-# 6. Data Splitting dan Ekstraksi Fitur
+6. Data Splitting dan Ekstraksi Fitur
 a. Memisahkan data menjadi fitur (teks) dan label (sentimen).
 b. Ekstraksi Fitur dengan TF-IDF: Mengubah teks menjadi vektor numerik menggunakan TF-IDF.
 c. Data Splitting: Membagi data menjadi data training dan testing.
 
-# 7. Training Model
+7. Training Model
 Melatih model Logistic Regression menggunakan data training.
 
-# 8. Evaluasi Model
+8. Evaluasi Model
 a. Evaluasi pada data training: Menghitung akurasi dan classification report pada data training.
 b. Evaluasi pada data testing: Menghitung akurasi, classification report dan confusion matrix pada data testing.
 
-# 9. Prediksi Sentimen
+9. Prediksi Sentimen
 Membuat fungsi predict_sentiment untuk memprediksi sentimen dari teks baru.
 Fungsi ini melakukan preprocessing teks yang sama seperti pada data training dan menggunakan model yang telah dilatih untuk melakukan prediksi.
 
-# 10. Contoh Penggunaan
+10. Contoh Penggunaan
 Meminta input teks dari pengguna, memprediksi sentimen teks tersebut, dan menampilkan hasilnya.
 
 ### Problem Statements
