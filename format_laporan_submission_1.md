@@ -54,7 +54,7 @@ Menjelaskan pernyataan masalah latar belakang:
 - Apa yang menjadi solusi untuk memperoleh akurasi yang baik dalam memprediksi hasil proses klasifikasi yang dibuat?
 
 ### Goals
-#  Jawaban pertanyaan 1
+# Jawaban pernyataan masalah 1
 - Berdasarkan pie chart yang ditampilkan, program ini menunjukkan kemampuan dalam mengelola hasil komentar, dengan persentase 19,5% komentar positif dari pie chart komentar dikategorikan positif dan 80,5 komentar negatif dari pie chart dikategorikan negatif.  Hal ini menunjukkan bahwa program mampu memilah sentimen positif dan negatif dengan cukup baik, namun perlu diingat bahwa akurasi ini bergantung pada data yang digunakan dan metode yang diterapkan.  Evaluasi lebih lanjut, seperti confusion matrix dan  *classification report*,  dapat memberikan informasi lebih detail terkait performa program dalam mengklasifikasikan komentar negatif dan positif.
 
 #  Jawaban pernyataan masalah 2
