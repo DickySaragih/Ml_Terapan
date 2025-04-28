@@ -105,6 +105,9 @@ Menjelaskan pernyataan masalah latar belakang:
     - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
 
 ## Data Understanding
+data merupakan hasil scraping melalui konten video youtube yang mengenai program dari pemerintah terkait Makan siang gratis. Dataset ini mengumpulkan opini masyarakat dalam bentuk komentar YouTube terkait dengan suatu topik, kemungkinan besar tentang program makan gratis berdasarkan contoh komentar yang terlihat. Beberapa komentar berisi pandangan kritis tentang penggunaan anggaran negara, sementara yang lain menunjukkan dukungan atau membuat guyonan terkait kebijakan tersebut. Setiap komentar disertai informasi tentang siapa penulisnya (author), berapa banyak orang yang menyukai komentar tersebut (like_count), dan kapan komentar tersebut dipublikasikan (published_at). Meskipun mayoritas komentar awal yang terlihat tidak memiliki banyak "like", dataset ini berpotensi untuk digunakan dalam analisis sentimen publik, tren opini, atau perbandingan respons. berikut adalah datanya 
+
+data yang 
 Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
