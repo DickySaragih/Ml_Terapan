@@ -1,46 +1,26 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Dicky Candid Saragih
 
 ## Domain Proyek
-
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-- Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
-- Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
+Pada proses ini pengembangan model prediktif untuk memperkirakan nilai akhir siswa.  Model ini memanfaatkan data berupa nilai ujian (matematika, membaca, menulis), informasi demografis (tingkat pendidikan orang tua, jenis kelamin), dan faktor lain seperti jenis makan siang serta partisipasi dalam kursus persiapan ujian.  Tujuan utama adalah mengidentifikasi siswa yang memerlukan bantuan tambahan dan memahami faktor-faktor yang memengaruhi prestasi akademik.  Proses ini melibatkan beberapa tahapan, mulai dari persiapan data yang mencakup transformasi fitur kategorikal (one-hot encoding dan TF-IDF untuk data teks), pembagian data latih dan uji, hingga pembangunan dan evaluasi model regresi (regresi linier dan decision tree).  Evaluasi model menggunakan metrik R-squared dan RMSE untuk mengukur akurasi prediksi.  Visualisasi data berupa heatmap korelasi digunakan untuk memahami hubungan antar variabel dan kontribusi masing-masing terhadap nilai akhir siswa.
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
-
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+1. Bagaimana memprediksi nilai akhir siswa secara akurat berdasarkan faktor-faktor seperti nilai ujian, latar belakang demografis, dan partisipasi dalam program persiapan ujian?
+2. Faktor-faktor apa yang paling berpengaruh terhadap nilai akhir siswa?
+3. Bagaimana model prediksi ini dapat digunakan untuk mengidentifikasi siswa yang memerlukan intervensi atau bantuan tambahan?
 
 ### Goals
+1. Mengembangkan model prediktif yang dapat memperkirakan nilai akhir siswa dengan akurasi yang tinggi.
+2. Mengidentifikasi faktor-faktor kunci yang berkontribusi pada nilai akhir siswa.
+3. Memberikan rekomendasi untuk intervensi atau dukungan kepada siswa yang berisiko rendah dalam prestasi akademik.
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
-
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+### Solution statements
+1Mengembangkan model machine learning regresi (Linear Regression dan Decision Tree Regressor) untuk memprediksi nilai akhir siswa berdasarkan data demografis, nilai ujian, dan partisipasi dalam kursus persiapan ujian.  Model ini akan dievaluasi menggunakan metrik R-squared dan RMSE.  Hasilnya akan digunakan untuk mengidentifikasi siswa yang memerlukan perhatian khusus dan untuk memahami faktor-faktor yang paling berpengaruh terhadap nilai akademik.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Dataset terdiri dari data nilai ujian siswa (matematika, membaca, menulis), informasi demografis (tingkat pendidikan orang tua, jenis kelamin, jenis makan siang), dan informasi tentang partisipasi dalam kursus persiapan ujian.  Variabel target adalah 'nilai_akhir', yang dihitung sebagai rata-rata dari tiga nilai ujian.
+sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
