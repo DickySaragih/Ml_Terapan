@@ -20,9 +20,8 @@ Pada proses ini pengembangan model prediktif untuk memperkirakan nilai akhir sis
 
 ## Data Understanding
 Dataset terdiri dari data nilai ujian siswa (matematika, membaca, menulis), informasi demografis (tingkat pendidikan orang tua, jenis kelamin, jenis makan siang), dan informasi tentang partisipasi dalam kursus persiapan ujian.  Variabel target adalah 'nilai_akhir', yang dihitung sebagai rata-rata dari tiga nilai ujian.
-sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+sumber atau tautan untuk mengunduh dataset. Contoh: [Data_siswa](https://github.com/DickySaragih/Ml_Terapan/blob/main/Data_siswa.csv).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
 ### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
 - accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
