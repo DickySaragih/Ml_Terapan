@@ -24,43 +24,37 @@ sumber atau tautan untuk mengunduh dataset. Contoh: [Data_siswa](https://github.
 
 
 ### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+- 'gender': Jenis kelamin siswa (kategorikal)
+- 'race/ethnicity': Ras atau etnis siswa (kategorikal)
+- 'parental level of education': Tingkat pendidikan orang tua (kategorikal)
+- 'lunch': Jenis makan siang (kategorikal)
+- 'test preparation course': Partisipasi dalam kursus persiapan ujian (kategorikal)
+- 'math score', 'reading score', 'writing score': Nilai ujian masing-masing mata pelajaran (numerik)
+- 'nilai_akhir': Nilai akhir siswa (numerik) - variabel target
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. Membuat kolom 'nilai_akhir' sebagai rata-rata dari 'math score', 'reading score', dan 'writing score'.
+2. Mengubah kolom 'parental level of education' menjadi representasi numerik menggunakan TF-IDF.
+3. Melakukan one-hot encoding untuk variabel kategorikal lainnya.
+4. Membagi dataset menjadi data training dan data testing.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+Dua model regresi digunakan: Linear Regression dan Decision Tree Regressor.
+1. Model Regresi Linier
+- Model: LinearRegression() dari sklearn.linear_model
+- Parameter: Tidak ada parameter yang diubah secara eksplisit. Model menggunakan pengaturan default.
+- Proses: Model dilatih dengan data training (X_train, y_train) dan digunakan untuk memprediksi nilai akhir pada data testing (X_test).  Hasil prediksi disimpan dalam variabel y_pred_lr.
+2. Model Decision Tree Regressor
+- Model: DecisionTreeRegressor(max_depth=5, random_state=42) dari sklearn.tree
+- Parameter:
+- max_depth=5: Kedalaman maksimum pohon keputusan dibatasi hingga 5 level.  Ini bertujuan untuk mencegah overfitting, di mana model terlalu kompleks dan mempelajari noise pada data training sehingga kinerjanya buruk pada data testing.
+- random_state=42: Digunakan untuk memastikan hasil yang konsisten setiap kali kode dijalankan. Menentukan random seed untuk algoritma Decision Tree.
+- Proses: Model dilatih dengan data training dan digunakan untuk memprediksi nilai akhir pada data testing. Hasil prediksi disimpan dalam variabel y_pred_dt.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+1. Model dievaluasi menggunakan dua metrik utama: R-squared (R2) dan Root Mean Squared Error (RMSE).
+R-squared menunjukkan proporsi variabilitas dalam variabel dependen (nilai akhir) yang dijelaskan oleh model. Nilai R2 yang mendekati 1 mengindikasikan bahwa model mampu menjelaskan sebagian besar variabilitas data, sedangkan nilai yang mendekati 0 menunjukkan bahwa model kurang baik dalam menjelaskan variabilitas data.
+RMSE mengukur rata-rata perbedaan antara nilai prediksi dan nilai sebenarnya. Nilai RMSE yang rendah menunjukkan bahwa model menghasilkan prediksi yang akurat, sedangkan nilai RMSE yang tinggi mengindikasikan bahwa model memiliki tingkat kesalahan prediksi yang besar.
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
-
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
-
+2. Berdasarkan hasil evaluasi model yang telah dilakukan, diperoleh bahwa model Regresi Linier dan Decision Tree Regressor menunjukkan performa prediksi yang sangat baik dalam memperkirakan nilai akhir siswa. Model Regresi Linier menghasilkan nilai R² sebesar 1.0, yang berarti model ini mampu menjelaskan 100% variabilitas dari data nilai akhir siswa. Selain itu, nilai Root Mean Squared Error (RMSE) yang sangat kecil, yaitu 1.7735568706636565e-14, mengindikasikan bahwa rata-rata kesalahan prediksi model hampir tidak ada. Hal ini menunjukkan bahwa model sangat akurat dalam memetakan hubungan antara fitur dan nilai akhir, meskipun kondisi ini juga bisa mengindikasikan overfitting terhadap data yang digunakan. Sementara itu, model Decision Tree Regressor juga menunjukkan performa yang sangat baik dengan nilai R² sebesar 0.9677026312392458 dan RMSE sebesar 2.631249903298834. Artinya, model ini mampu menjelaskan sekitar 96.77% variabilitas dalam nilai akhir siswa, dengan rata-rata kesalahan prediksi sekitar 2.63 poin. Meskipun tidak seakurat regresi linier, model ini memberikan hasil yang lebih realistis dan mungkin lebih andal untuk data baru yang lebih beragam.
+Secara keseluruhan, kedua model menunjukkan bahwa fitur-fitur yang digunakan dalam dataset memiliki hubungan yang kuat dengan nilai akhir siswa. Namun, model regresi linier memberikan hasil prediksi yang lebih presisi pada data ini. Untuk meningkatkan keandalan dan generalisasi model, disarankan dilakukan evaluasi lebih lanjut dengan data uji tambahan atau metode validasi silang, serta identifikasi faktor-faktor yang paling signifikan melalui analisis fitur lanjutan.
