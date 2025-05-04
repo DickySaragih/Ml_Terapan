@@ -1,27 +1,33 @@
 # Laporan Proyek Machine Learning - Dicky Candid Saragih
 
 ## Domain Proyek
-Pada proses ini pengembangan model prediktif untuk memperkirakan nilai akhir siswa.  Model ini memanfaatkan data berupa nilai ujian (matematika, membaca, menulis), informasi demografis (tingkat pendidikan orang tua, jenis kelamin), dan faktor lain seperti jenis makan siang serta partisipasi dalam kursus persiapan ujian.  Tujuan utama adalah mengidentifikasi siswa yang memerlukan bantuan tambahan dan memahami faktor-faktor yang memengaruhi prestasi akademik.  Proses ini melibatkan beberapa tahapan, mulai dari persiapan data yang mencakup transformasi fitur kategorikal (one-hot encoding dan TF-IDF untuk data teks), pembagian data latih dan uji, hingga pembangunan dan evaluasi model regresi (regresi linier dan decision tree).  Evaluasi model menggunakan metrik R-squared dan RMSE untuk mengukur akurasi prediksi.  Visualisasi data berupa heatmap korelasi digunakan untuk memahami hubungan antar variabel dan kontribusi masing-masing terhadap nilai akhir siswa.
+Proyek ini berfokus pada penerapan analitik prediktif dalam sektor pendidikan untuk memahami bagaimana faktor-faktor demografis memengaruhi performa akademik siswa. Data yang dianalisis mencakup informasi seperti jenis kelamin, latar belakang etnis, tingkat pendidikan orang tua, serta hasil nilai ujian pada mata pelajaran matematika, membaca, dan menulis.
+Melalui pendekatan ini, proyek bertujuan mengidentifikasi kesenjangan hasil belajar yang mungkin timbul akibat perbedaan demografis. Misalnya, apakah terdapat ketimpangan performa antara siswa laki-laki dan perempuan, kelompok etnis tertentu, atau siswa dengan latar belakang keluarga berpendidikan rendah. Dengan memahami pola-pola ini, model prediktif dapat dikembangkan untuk memproyeksikan performa akademik dan mendukung kebijakan pendidikan yang lebih inklusif dan berbasis data.
 
 ## Business Understanding
+Dalam sistem pendidikan, kesenjangan hasil belajar antar siswa seringkali disebabkan oleh faktor-faktor yang tidak sepenuhnya akademik, melainkan juga berasal dari latar belakang demografis siswa itu sendiri. Tanpa pemahaman mendalam terhadap pengaruh variabel seperti gender, etnis, dan tingkat pendidikan orang tua, institusi pendidikan mungkin kesulitan dalam menerapkan strategi pembelajaran yang efektif dan adil.
+Proyek ini bertujuan untuk memberikan pemahaman berbasis data tentang bagaimana karakteristik demografis siswa berkorelasi dengan pencapaian akademik mereka. Dengan informasi ini, pengambil kebijakan pendidikan, guru, dan manajemen sekolah dapat mengambil tindakan yang lebih tepat sasaran — baik untuk intervensi, pengembangan kurikulum, maupun perencanaan program dukungan belajar.
 
 ### Problem Statements
-1. Bagaimana memprediksi nilai akhir siswa secara akurat berdasarkan faktor-faktor seperti nilai ujian, latar belakang demografis, dan partisipasi dalam program persiapan ujian?
-2. Faktor-faktor apa yang paling berpengaruh terhadap nilai akhir siswa?
-3. Bagaimana model prediksi ini dapat digunakan untuk mengidentifikasi siswa yang memerlukan intervensi atau bantuan tambahan?
+1. Apakah terdapat perbedaan signifikan dalam skor matematika, membaca, dan menulis berdasarkan jenis kelamin siswa?
+2. Bagaimana pengaruh latar belakang etnis siswa terhadap performa akademik mereka?
+3.Seberapa besar pengaruh tingkat pendidikan orang tua terhadap capaian nilai akademik siswa?
 
 ### Goals
-1. Mengembangkan model prediktif yang dapat memperkirakan nilai akhir siswa dengan akurasi yang tinggi.
-2. Mengidentifikasi faktor-faktor kunci yang berkontribusi pada nilai akhir siswa.
-3. Memberikan rekomendasi untuk intervensi atau dukungan kepada siswa yang berisiko rendah dalam prestasi akademik.
+1. Mengidentifikasi fitur demografis yang paling memengaruhi skor akademik siswa.
+2. Menyediakan insight berbasis data terkait kesenjangan performa akademik berdasarkan latar belakang siswa.
+3. Membangun model prediktif untuk memperkirakan nilai siswa berdasarkan data demografis dan hasil ujian lainnya.
+4. Mendukung pengembangan strategi pembelajaran yang lebih inklusif dan responsif terhadap kebutuhan siswa yang beragam.
 
 ### Solution statements
-1Mengembangkan model machine learning regresi (Linear Regression dan Decision Tree Regressor) untuk memprediksi nilai akhir siswa berdasarkan data demografis, nilai ujian, dan partisipasi dalam kursus persiapan ujian.  Model ini akan dievaluasi menggunakan metrik R-squared dan RMSE.  Hasilnya akan digunakan untuk mengidentifikasi siswa yang memerlukan perhatian khusus dan untuk memahami faktor-faktor yang paling berpengaruh terhadap nilai akademik.
+1. Melakukan eksplorasi dan visualisasi data untuk menemukan pola dan hubungan antara variabel demografis dan skor ujian siswa.
+2. Menggunakan teknik machine learning, seperti regresi linier atau pohon keputusan, untuk membangun model prediktif terhadap nilai akademik siswa.
+3. Menerapkan teknik evaluasi model seperti MAE, RMSE, dan R² untuk menilai akurasi model yang dibangun.
+4. Memberikan rekomendasi kebijakan berbasis hasil analisis untuk meningkatkan keadilan dan efektivitas dalam pembelajaran siswa.
 
 ## Data Understanding
-Dataset terdiri dari data nilai ujian siswa (matematika, membaca, menulis), informasi demografis (tingkat pendidikan orang tua, jenis kelamin, jenis makan siang), dan informasi tentang partisipasi dalam kursus persiapan ujian.  Variabel target adalah 'nilai_akhir', yang dihitung sebagai rata-rata dari tiga nilai ujian.
+Dataset terdiri dari data nilai ujian siswa (matematika, membaca, menulis), informasi demografis (tingkat pendidikan orang tua, jenis kelamin, jenis makan siang), dan informasi tentang partisipasi dalam kursus persiapan ujian. Dataset ini memiliki 1000 baris dan 8 kolom. sebelum dilakukannya proses pemodelan data terlebih dahulu dibersihkan pada proses cleaning data agar beberapa nilai hilang yang ditangani dengan imputasi menggunakan nilai mean untuk kolom numerik.  Jumlah data duplikat ditemukan dan telah dihapus.
 sumber atau tautan untuk mengunduh dataset. Contoh: [Data_siswa](https://github.com/DickySaragih/Ml_Terapan/blob/main/Data_siswa.csv).
-
 
 ### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
 - 'gender': Jenis kelamin siswa (kategorikal)
@@ -33,10 +39,10 @@ sumber atau tautan untuk mengunduh dataset. Contoh: [Data_siswa](https://github.
 - 'nilai_akhir': Nilai akhir siswa (numerik) - variabel target
 
 ## Data Preparation
-1. Membuat kolom 'nilai_akhir' sebagai rata-rata dari 'math score', 'reading score', dan 'writing score'.
-2. Mengubah kolom 'parental level of education' menjadi representasi numerik menggunakan TF-IDF.
-3. Melakukan one-hot encoding untuk variabel kategorikal lainnya.
-4. Membagi dataset menjadi data training dan data testing.
+ tahapan penting yang dilakukan pada data preparation.
+ 1. Dilakukan *data cleaning* untuk menangani *missing values* pada data numerik dengan menggunakan *SimpleImputer* berstrategi *mean*.  Data duplikat juga diidentifikasi dan dihapus.  Selanjutnya, tipe data diperiksa dan diubah jika diperlukan. Tahapan ini bertujuan untuk memastikan kualitas data yang akan digunakan dalam pemodelan.
+2. Dilakukan proses transformasi fitur.  Variabel kategorikal, seperti jenis kelamin, persiapan ujian, dan jenis makan siang, diubah menjadi representasi numerik menggunakan *label encoding*.  Kolom kategorikal lainnya yang memiliki lebih dari dua kategori unik, seperti ras/etnis dan tingkat pendidikan orang tua, diubah menggunakan *one-hot encoding* untuk menghindari penciptaan urutan semu antar kategori.
+3. Ketiga, data dibagi menjadi fitur (X) dan target (y), dengan 'math score' sebagai variabel target yang akan diprediksi.  Data kemudian dibagi menjadi data latih (80%) dan data uji (20%) menggunakan fungsi `train_test_split`. Pembagian data ini penting untuk mengevaluasi kinerja model pada data yang belum pernah dilihat sebelumnya.  Seluruh tahapan ini bertujuan untuk mempersiapkan data agar sesuai dengan kebutuhan algoritma *machine learning* dan menghasilkan model yang akurat dan andal dalam memprediksi nilai matematika siswa.
 
 ## Modeling
 Dua model regresi digunakan: Linear Regression dan Decision Tree Regressor.
@@ -52,9 +58,16 @@ Dua model regresi digunakan: Linear Regression dan Decision Tree Regressor.
 - Proses: Model dilatih dengan data training dan digunakan untuk memprediksi nilai akhir pada data testing. Hasil prediksi disimpan dalam variabel y_pred_dt.
 
 ## Evaluation
-1. Model dievaluasi menggunakan dua metrik utama: R-squared (R2) dan Root Mean Squared Error (RMSE).
-R-squared menunjukkan proporsi variabilitas dalam variabel dependen (nilai akhir) yang dijelaskan oleh model. Nilai R2 yang mendekati 1 mengindikasikan bahwa model mampu menjelaskan sebagian besar variabilitas data, sedangkan nilai yang mendekati 0 menunjukkan bahwa model kurang baik dalam menjelaskan variabilitas data.
-RMSE mengukur rata-rata perbedaan antara nilai prediksi dan nilai sebenarnya. Nilai RMSE yang rendah menunjukkan bahwa model menghasilkan prediksi yang akurat, sedangkan nilai RMSE yang tinggi mengindikasikan bahwa model memiliki tingkat kesalahan prediksi yang besar.
 
-2. Berdasarkan hasil evaluasi model yang telah dilakukan, diperoleh bahwa model Regresi Linier dan Decision Tree Regressor menunjukkan performa prediksi yang sangat baik dalam memperkirakan nilai akhir siswa. Model Regresi Linier menghasilkan nilai R² sebesar 1.0, yang berarti model ini mampu menjelaskan 100% variabilitas dari data nilai akhir siswa. Selain itu, nilai Root Mean Squared Error (RMSE) yang sangat kecil, yaitu 1.7735568706636565e-14, mengindikasikan bahwa rata-rata kesalahan prediksi model hampir tidak ada. Hal ini menunjukkan bahwa model sangat akurat dalam memetakan hubungan antara fitur dan nilai akhir, meskipun kondisi ini juga bisa mengindikasikan overfitting terhadap data yang digunakan. Sementara itu, model Decision Tree Regressor juga menunjukkan performa yang sangat baik dengan nilai R² sebesar 0.9677026312392458 dan RMSE sebesar 2.631249903298834. Artinya, model ini mampu menjelaskan sekitar 96.77% variabilitas dalam nilai akhir siswa, dengan rata-rata kesalahan prediksi sekitar 2.63 poin. Meskipun tidak seakurat regresi linier, model ini memberikan hasil yang lebih realistis dan mungkin lebih andal untuk data baru yang lebih beragam.
-Secara keseluruhan, kedua model menunjukkan bahwa fitur-fitur yang digunakan dalam dataset memiliki hubungan yang kuat dengan nilai akhir siswa. Namun, model regresi linier memberikan hasil prediksi yang lebih presisi pada data ini. Untuk meningkatkan keandalan dan generalisasi model, disarankan dilakukan evaluasi lebih lanjut dengan data uji tambahan atau metode validasi silang, serta identifikasi faktor-faktor yang paling signifikan melalui analisis fitur lanjutan.
+Evaluasi data dilakukan secara komprehensif, mulai dari pembersihan data (menangani missing values dan duplikat), persiapan data (encoding variabel kategorikal dan pembagian data latih-uji), analisis data (perbedaan berdasarkan gender, pengaruh etnis dan pendidikan orang tua), hingga pemodelan dan evaluasi.  Pembersihan data memastikan kualitas data, sementara persiapan data menghasilkan format yang sesuai untuk model. Analisis eksploratif mengungkap hubungan antara variabel demografis dan skor akademik. Dua model regresi (Linear Regression dan Decision Tree Regressor) dibangun dan dievaluasi menggunakan metrik MAE, MSE, RMSE, dan R-squared, dengan hasil menunjukkan bahwa salah satu model (tergantung pada hasil perhitungan R-squared) memiliki kinerja yang lebih baik dalam menjelaskan variabilitas data. Visualisasi korelasi memperkuat analisis dengan menunjukkan hubungan antar fitur dan skor matematika. Keseluruhan proses menunjukkan upaya sistematis untuk memahami faktor-faktor yang mempengaruhi skor matematika siswa dan memilih model prediksi terbaik.
+- Adapaun saran agar hasil yang diperoleh lebih baik lagi seperti berikut:
+1. Analisis lebih dalam: Jelajahi interaksi antar fitur demografis (misalnya, pengaruh tingkat pendidikan orang tua pada perbedaan gender).
+2. Variabel lain: Pertimbangkan variabel lain seperti jam belajar, kebiasaan membaca, atau akses internet yang mungkin berpengaruh terhadap skor akademik.
+3. Optimasi model: Lakukan optimasi hyperparameter pada model regresi yang dipilih, serta eksplorasi model lain (misalnya, Random Forest, SVM).
+4. Cross-validation: Gunakan cross-validation untuk evaluasi model yang lebih robust.
+5. Interpretasi hasil: Berikan interpretasi hasil yang lebih detail dan spesifik, menghubungkan temuan dengan strategi pembelajaran yang konkret.
+6. Visualisasi: Pertimbangkan visualisasi tambahan untuk menunjukkan interaksi antar variabel dan hasil prediksi model.
+7. Feature Importance:  Analisis feature importance dari model yang sudah dibuat untuk memahami fitur yang paling berpengaruh pada model.
+8. Robustness Check: Cek kualitas model dengan menggunakan data baru atau melakukan simulasi perubahan pada data.
+
+
