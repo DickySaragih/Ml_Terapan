@@ -42,14 +42,13 @@ sumber atau tautan untuk mengunduh dataset.
 - 'math score', 'reading score', 'writing score': Nilai ujian masing-masing mata pelajaran (numerik)
 - 'Reading score' : skor nilai membaca
 - 'Writing score' : skor nilai menulis
-- 'nilai_akhir': Nilai akhir siswa (numerik) - variabel target
-
 
 ## Data Preparation
  tahapan penting yang dilakukan pada data preparation.
 1. Dilakukan *data cleaning* untuk menangani *missing values* pada data numerik dengan menggunakan *SimpleImputer* berstrategi *mean*.  Data duplikat juga diidentifikasi dan dihapus.  Selanjutnya, tipe data diperiksa dan diubah jika diperlukan. Tahapan ini bertujuan untuk memastikan kualitas data yang akan digunakan dalam pemodelan.
 2. Dilakukan proses transformasi fitur.  Variabel kategorikal, seperti jenis kelamin, persiapan ujian, dan jenis makan siang, diubah menjadi representasi numerik menggunakan *label encoding*.  Kolom kategorikal lainnya yang memiliki lebih dari dua kategori unik, seperti ras/etnis dan tingkat pendidikan orang tua, diubah menggunakan *one-hot encoding* untuk menghindari penciptaan urutan semu antar kategori.
-3. Ketiga, data dibagi menjadi fitur (X) dan target (y), dengan 'math score' sebagai variabel target yang akan diprediksi.  Data kemudian dibagi menjadi data latih (80%) dan data uji (20%) menggunakan fungsi `train_test_split`. Pembagian data ini penting untuk mengevaluasi kinerja model pada data yang belum pernah dilihat sebelumnya.  Seluruh tahapan ini bertujuan untuk mempersiapkan data agar sesuai dengan kebutuhan algoritma *machine learning* dan menghasilkan model yang akurat dan andal dalam memprediksi nilai matematika siswa.
+3. Pada tahap data preparation, dilakukan proses imputasi untuk menangani nilai-nilai yang hilang.  Kolom numerik yang memiliki missing value diisi dengan nilai rata-rata (mean) dari kolom tersebut. Strategi ini dipilih untuk menjaga distribusi data dan meminimalkan bias.  Proses imputasi menggunakan `SimpleImputer` dari library `scikit-learn`.
+4. Ketiga, data dibagi menjadi fitur (X) dan target (y), dengan 'math score' sebagai variabel target yang akan diprediksi.  Data kemudian dibagi menjadi data latih (80%) dan data uji (20%) menggunakan fungsi `train_test_split`. Pembagian data ini penting untuk mengevaluasi kinerja model pada data yang belum pernah dilihat sebelumnya.  Seluruh tahapan ini bertujuan untuk mempersiapkan data agar sesuai dengan kebutuhan algoritma *machine learning* dan menghasilkan model yang akurat dan andal dalam memprediksi nilai matematika siswa.
 
 ## Modeling
 Dua model regresi digunakan: Linear Regression dan Decision Tree Regressor.
@@ -128,8 +127,25 @@ Solusi dan insight yang diperoleh dari hasil analisis ini berpotensi memberikan 
 1. Memberikan evidence-based insight bagi institusi pendidikan dalam menyusun program pembelajaran atau intervensi akademik.
 2. Menyoroti pentingnya mempertimbangkan faktor demografis seperti gender, etnis, dan latar belakang orang tua dalam menyusun kebijakan pendidikan yang adil dan merata.
 3. Membantu pengambil keputusan dalam pendidikan untuk merancang kebijakan yang lebih inklusif, misalnya dengan menyediakan dukungan belajar tambahan untuk kelompok yang lebih rentan secara akademik.
-
 Solusi yang dihasilkan tidak hanya menjawab permasalahan secara akademik, namun juga relevan dalam konteks sosial dan kebijakan pendidikan.
+
+**Hasil evaluasi proses**
+Berdasarkan hasil evaluasi, performa kedua model dalam memprediksi skor matematika siswa dapat dibandingkan melalui beberapa metrik.
+
+Model Regresi Linear:
+  - MAE: 4.21. Nilai MAE menunjukkan rata-rata selisih absolut antara prediksi dan nilai sebenarnya.
+  - MSE: 29.10. Nilai MSE merepresentasikan rata-rata kuadrat selisih antara prediksi dan nilai sebenarnya.
+  - RMSE: 5.39. Nilai RMSE merupakan akar kuadrat dari MSE, memberikan gambaran kesalahan prediksi dalam satuan yang sama dengan variabel target.
+  - R-squared: 0.88. Nilai R-squared menunjukkan proporsi variabilitas dalam data yang dijelaskan oleh model.
+
+Model Decision Tree:
+  - MAE: 6.56. Nilai MAE menunjukkan rata-rata selisih absolut antara prediksi dan nilai sebenarnya.
+  - MSE: 67.71. Nilai MSE merepresentasikan rata-rata kuadrat selisih antara prediksi dan nilai sebenarnya.
+  - RMSE: 8.23. Nilai RMSE merupakan akar kuadrat dari MSE, memberikan gambaran kesalahan prediksi dalam satuan yang sama dengan variabel target.
+  - R-squared: 0.72. Nilai R-squared menunjukkan proporsi variabilitas dalam data yang dijelaskan oleh model.
+
+Perbandingan Model:
+Model Regresi Linear memiliki nilai R-squared yang lebih tinggi dibandingkan Decision Tree, mengindikasikan model ini mampu menjelaskan variabilitas data dengan lebih baik.
 
 **Kesimpulan**
 Berdasarkan evaluasi yang telah dilakukan, dapat disimpulkan bahwa proses analisis telah dilaksanakan dengan baik, sesuai dengan pernyataan masalah dan tujuan penelitian. Analisis yang dilakukan tidak hanya bersifat deskriptif, tetapi juga menghasilkan temuan yang dapat dijadikan dasar pertimbangan strategis dalam peningkatan kualitas dan keadilan pendidikan. Proyek ini berhasil menunjukkan bahwa pendekatan analitik berbasis data dapat memberikan kontribusi nyata dalam menyusun kebijakan pendidikan yang lebih inklusif dan berdampak.
