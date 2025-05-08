@@ -57,6 +57,7 @@ Pembahasan cara kerja.
 Regresi linear adalah model statistik yang digunakan untuk memodelkan hubungan linear antara satu variabel dependen (variabel target) dan satu atau lebih variabel independen (variabel prediktor).  Model ini bekerja dengan mencari garis lurus (atau bidang dalam kasus multivariabel) yang paling tepat merepresentasikan hubungan antara variabel-variabel tersebut.  Garis ini ditentukan oleh koefisien regresi dan *intercept*. Koefisien regresi menunjukkan pengaruh perubahan satu unit variabel independen terhadap variabel dependen, sementara *intercept* menunjukkan nilai variabel dependen ketika semua variabel independen bernilai nol.  Dalam implementasi kode, model dilatih dengan data latih (X_train, y_train) untuk menemukan koefisien dan *intercept* yang optimal yang meminimalkan kesalahan prediksi pada data latih.  Kemudian, model tersebut digunakan untuk memprediksi nilai variabel dependen pada data uji (X_test).
 
 **Pembahasan parameter.**
+
 Model `LinearRegression` di scikit-learn memiliki beberapa parameter, meskipun dalam kode yang diberikan tidak ada parameter yang diubah dari nilai defaultnya. Beberapa parameter penting antara lain:
 * `fit_intercept`: Parameter boolean yang menentukan apakah model harus memperkirakan intercept atau tidak. Nilai defaultnya adalah `True`.
 * `normalize`: Parameter boolean yang menentukan apakah variabel independen akan dinormalisasi sebelum pemodelan. Nilai defaultnya adalah `False`.  Sebaiknya gunakan `StandardScaler` untuk normalisasi.
@@ -64,6 +65,7 @@ Model `LinearRegression` di scikit-learn memiliki beberapa parameter, meskipun d
 * `n_jobs`: Parameter integer yang menentukan jumlah prosesor yang akan digunakan dalam pemodelan. Nilai defaultnya adalah `None`.
 
 **Kelebihan/kekurangan**
+
 Kelebihan:
 * Sederhana dan mudah diinterpretasi.
 * Menghasilkan model yang mudah dipahami dan dijelaskan.
@@ -79,6 +81,7 @@ Pembahasan cara kerja.
 Decision Tree Regressor adalah model yang membangun pohon keputusan untuk memprediksi nilai numerik.  Pohon keputusan terdiri dari serangkaian node, cabang, dan daun. Node internal merepresentasikan fitur (variabel independen) yang digunakan untuk membuat keputusan, cabang merepresentasikan nilai-nilai yang mungkin dari fitur tersebut, dan daun merepresentasikan nilai prediksi untuk variabel dependen. Model ini bekerja dengan merekursif membagi dataset berdasarkan fitur yang paling informatif (fitur yang meminimalkan ketidakmurnian), sehingga membentuk struktur pohon yang menyerupai struktur keputusan. Pada proses prediksi, data baru mengikuti jalur pohon keputusan berdasarkan nilai fitur-fiturnya hingga mencapai daun, dan nilai di daun tersebut merupakan nilai prediksi yang dihasilkan.
 
 **Pembahasan parameter.**
+
 * `random_state`:  Digunakan untuk mengontrol keacakan pada saat pembangunan pohon keputusan. Parameter ini penting untuk memastikan bahwa model dapat direproduksi. 
 Beberapa parameter lainnya yang dapat diubah antara lain:
 * `max_depth`: Batasan kedalaman maksimum dari pohon. 
@@ -87,6 +90,7 @@ Beberapa parameter lainnya yang dapat diubah antara lain:
 * `max_features`: Jumlah fitur yang dipertimbangkan untuk setiap pemisahan.
 
 **Kelebihan/kekurangan**
+
 Kelebihan:
 * Mudah diinterpretasi.
 * Dapat menangani variabel kategorikal dan numerik.
@@ -100,9 +104,11 @@ Kekurangan:
 
 ## Evaluation
 **Matrik Evaluasi**
+
 Pada proyek prediksi nilai matematika siswa ini, matriks evaluasi berperan krusial dalam mengukur performa model *machine learning*.  Meskipun dalam kode yang diberikan tidak secara eksplisit didefinisikan matriks evaluasi dalam bentuk tabel,  metrik evaluasi seperti *Mean Absolute Error* (MAE), *Mean Squared Error* (MSE), *Root Mean Squared Error* (RMSE), dan *R-squared* telah digunakan untuk mengevaluasi model *Linear Regression* dan *Decision Tree Regressor*.  Metrik-metrik ini secara implisit membentuk dasar untuk matriks evaluasi.  Setiap metrik tersebut mengukur aspek berbeda dari akurasi dan ketepatan model. MAE menunjukkan kesalahan absolut rata-rata, MSE dan RMSE mengukur kesalahan kuadrat rata-rata (RMSE dalam satuan variabel target), sementara R-squared mengindikasikan proporsi variabilitas data yang dijelaskan oleh model.
 
 **Evaluasi Proses Analisis**
+
 Proses analisis data eksploratif (EDA) telah dilakukan secara sistematis untuk menjawab pernyataan masalah utama dalam proyek ini, yaitu:
 1. Apakah terdapat perbedaan signifikan dalam skor matematika, membaca, dan menulis berdasarkan jenis kelamin siswa?
 2. Bagaimana pengaruh latar belakang etnis siswa terhadap performa akademik mereka?
@@ -113,6 +119,7 @@ One-Way ANOVA untuk menguji perbedaan skor berdasarkan etnis dan tingkat pendidi
 Boxplot dan Violin Plot untuk memperkuat interpretasi dan pemahaman hasil statistik.
 
 **Pencapaian dalam Goals**
+
 Tujuan utama dari analisis ini adalah:
 Mengidentifikasi faktor demografis yang memengaruhi performa akademik siswa.
 Menyediakan dasar bagi pengambilan kebijakan pendidikan yang lebih inklusif dan berbasis data.
@@ -123,6 +130,7 @@ Hasil analisis menunjukkan bahwa:
 Dengan demikian, semua tujuan penelitian telah tercapai secara menyeluruh dan terukur.
 
 **Dampak Solusi yang Diberikan**
+
 Solusi dan insight yang diperoleh dari hasil analisis ini berpotensi memberikan dampak yang signifikan, di antaranya:
 1. Memberikan evidence-based insight bagi institusi pendidikan dalam menyusun program pembelajaran atau intervensi akademik.
 2. Menyoroti pentingnya mempertimbangkan faktor demografis seperti gender, etnis, dan latar belakang orang tua dalam menyusun kebijakan pendidikan yang adil dan merata.
@@ -130,6 +138,7 @@ Solusi dan insight yang diperoleh dari hasil analisis ini berpotensi memberikan 
 Solusi yang dihasilkan tidak hanya menjawab permasalahan secara akademik, namun juga relevan dalam konteks sosial dan kebijakan pendidikan.
 
 **Hasil evaluasi proses**
+
 Berdasarkan hasil evaluasi, performa kedua model dalam memprediksi skor matematika siswa dapat dibandingkan melalui beberapa metrik.
 
 Model Regresi Linear:
@@ -148,4 +157,5 @@ Perbandingan Model:
 Model Regresi Linear memiliki nilai R-squared yang lebih tinggi dibandingkan Decision Tree, mengindikasikan model ini mampu menjelaskan variabilitas data dengan lebih baik.
 
 **Kesimpulan**
+
 Berdasarkan evaluasi yang telah dilakukan, dapat disimpulkan bahwa proses analisis telah dilaksanakan dengan baik, sesuai dengan pernyataan masalah dan tujuan penelitian. Analisis yang dilakukan tidak hanya bersifat deskriptif, tetapi juga menghasilkan temuan yang dapat dijadikan dasar pertimbangan strategis dalam peningkatan kualitas dan keadilan pendidikan. Proyek ini berhasil menunjukkan bahwa pendekatan analitik berbasis data dapat memberikan kontribusi nyata dalam menyusun kebijakan pendidikan yang lebih inklusif dan berdampak.
